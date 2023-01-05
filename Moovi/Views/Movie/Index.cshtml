@@ -1,0 +1,43 @@
+﻿@using Moovi.ViewModels
+
+@model List<MoviesViewModel>
+@{
+    var movies = Model ?? new List<MoviesViewModel>() { };
+}
+<div class="container">
+    <div class="row">
+        <h1>
+            Movies
+        </h1>
+        <br />
+    </div>
+    <div class="row justify-content-center py-4">
+        @foreach (var movie in @movies)
+        {
+            <div class="col-md-3 px-1">
+                <div class="card">
+
+                    @if (movie.FileName == null || movie.FilePath == null)
+                    {
+                        <img class="card-img-top" src="./assets/blank-image.jpg" alt="blank">
+                    }
+                    else
+                    {
+                        <img class="card-img-top" src="" alt="movie-cover"/>
+                    }
+
+                    <div class="card-body">
+                        <div class="card-title">
+                            @Html.DisplayFor(i => movie.Title)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+
+}

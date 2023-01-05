@@ -1,0 +1,57 @@
+﻿@using Moovi.ViewModels
+@{
+    UpsertMovieViewModel formMovie = (UpsertMovieViewModel)ViewData["FormMovie"];
+}
+<div class="container">
+    <div class="row my-4">
+        <h1>Create Movie</h1>
+        <a class="link-secondary" href="#" onclick="goBack()">Back</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row bg-light border border-light" style="min-height: 500px;">
+                <img id="frame" src="" alt="movie image" width="200" />
+            </div>
+            <div class="row">
+                <label for="formFile" class="form-label">Upload Movie Cover</label>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <input id="formFile" class="form-control" type="file" onchange="preview()" />
+                </div>
+                <div class="col-6">
+                    <button onclick="clearImage()" class="btn btn-primary">Clear</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div>rerr</div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $('#frame').ready(() => {
+            $('#frame').hide();
+        })
+
+        function goBack() {
+            window.history.back()
+        }
+        function preview() {
+            var file = event.target.files[0];
+            frame.src = URL.createObjectURL(file);
+            $('#frame').show();
+        }
+        function clearImage() {
+            document.getElementById('formFile').value = null;
+            frame.src = "";
+            $('#frame').hide();
+        }
+
+
+    </script>
+}

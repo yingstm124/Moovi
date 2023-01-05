@@ -1,0 +1,56 @@
+﻿@using Moovi.ViewModels
+@model List<AdminMovieViewModel>
+@{
+    var adminMovies = Model ?? new List<AdminMovieViewModel>() { };
+}
+<div class="container">
+    <div class="row">
+        <h1>Admin</h1>
+    </div>
+    <div class="row">
+        <div class="d-flex flex-row-reverse">
+            
+            <a asp-action="CreateMovie" class="btn btn-primary">New Movie</a>
+        </div>
+    </div>
+    <div class="row justify-content-center py-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int index = 0;
+                }
+                @foreach (var movie in @adminMovies)
+                {
+                    <tr>
+                        <th scope="row">@index</th>
+                        <td>
+                            @if (movie.FileName == null || movie.FilePath == null)
+                            {
+                                <img src="./assets/blank-image.jpg" width="50" height="50" alt="blank image" />
+                            }
+                            else
+                            {
+                                <img src="" width="50" height="50" alt="movie-cover" />
+                            }
+                        </td>
+                        <td>@Html.DisplayFor(i => movie.Title)</td>
+                        <td>
+                            <button type="button" class="btn btn-light">Edit</button>
+                            <button type="button" class="btn btn-light">Detail</button>
+                            <button type="button" class="btn btn-danger">Del</button>
+                        </td>
+                    </tr>
+                    index++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
