@@ -17,18 +17,20 @@
             <div class="col-md-3 px-1">
                 <div class="card">
 
-                    @if (movie.FileName == null || movie.FilePath == null)
+                    @*@if (movie.FileName == null || movie.FilePath == null)
                     {
-                        <img class="card-img-top" src="./assets/blank-image.jpg" alt="blank">
+                        <img class="card-img-top" src="~/assets/blank-image.jpg" alt="blank">
                     }
                     else
                     {
-                        <img class="card-img-top" src="" alt="movie-cover"/>
-                    }
+                        <img class="card-img-top" src="@movie.FilePath" alt="@movie.Title" />
+                    }*@
+
+                    <img class="card-img-top" src="@movie.FilePath" alt="@movie.Title" />
 
                     <div class="card-body">
                         <div class="card-title">
-                            @Html.DisplayFor(i => movie.Title)
+                            @Html.DisplayFor(i => movie.FilePath)
                         </div>
                     </div>
 

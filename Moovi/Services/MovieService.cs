@@ -7,16 +7,23 @@ using Moovi.ViewModels;
 namespace Moovi.Services
 {
     public class MovieService : IMovieService
-    {        
+    {
+        private readonly IWebHostEnvironment _webHostEnv;
+        public MovieService(IWebHostEnvironment webHostEnv) 
+        {
+            _webHostEnv = webHostEnv;
+        }
         public List<MoviesViewModel> GetMovies()
         {
             var movies = MovieList.SelectMovieLists();
+            var displayImage = Path.Combine(_webHostEnv.WebRootPath, "uploads/movies");
+            DirectoryInfo directoryInfo = new DirectoryInfo(displayImage);
+            FileInfo[] fileInfo = directoryInfo.GetFiles();
+
             return movies.Select(m => new MoviesViewModel() 
             { 
                 Id = m.Id,
-                Title = m.Title,
-                FileName = m.FileName,
-                FilePath = m.FilePath,
+                Title = m.Title            
             }).ToList();
         }
         public AdminMovieDetailViewModel GetMovie(Guid movieId)

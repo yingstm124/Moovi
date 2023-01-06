@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bxjsg4WB4jqwsQFmq8TXDMKfuKSHaKzVWkOL2v4VKRY=",
+  "Hash": "VyIuLRP0lXTYFcofbfKs91Gu6GUa0J/f8TuXFPS+vqk=",
   "Source": "Moovi",
   "BasePath": "_content/Moovi",
   "Mode": "Default",
@@ -1086,6 +1086,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\YingSutimarPengpinij\\Desktop\\Moovi\\Moovi\\wwwroot\\uploads\\movies\\avatar2.jpg",
+      "SourceId": "Moovi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\YingSutimarPengpinij\\Desktop\\Moovi\\Moovi\\wwwroot\\",
+      "BasePath": "_content/Moovi",
+      "RelativePath": "uploads/movies/avatar2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\movies\\avatar2.jpg"
     }
   ]
 }
