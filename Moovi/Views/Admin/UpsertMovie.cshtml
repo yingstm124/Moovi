@@ -1,17 +1,16 @@
-﻿@using Moovi.ViewModels
-@{
-    UpsertMovieViewModel formMovie = (UpsertMovieViewModel)ViewData["FormMovie"];
-}
+﻿@model UpsertMovieViewModel
+@using Moovi.ViewModels
+
 <div class="container">
     <div class="row my-4">
         <h1>Create Movie</h1>
-        <a class="link-secondary" href="#" onclick="goBack()">Back</a>
+        <a class="link-secondary"  asp-action="Index">Back</a>
     </div>
 
     <div class="row">
         <div class="col-md-4">
             <div class="row bg-light border border-light" style="min-height: 500px;">
-                <img id="frame" src="" alt="movie image" width="200" />
+                <img id="frame" src="~/assets/blank-image.jpg" alt="movie image" width="200"/>
             </div>
             <div class="row">
                 <label for="formFile" class="form-label">Upload Movie Cover</label>
@@ -28,10 +27,11 @@
 
         <div class="col-md-8">
             <div class="d-flex align-items-start flex-column h-100">
-                <form class="form-horizontal" asp-controller="Admin" asp-action="CreateMovie">
+                <form class="form-horizontal" asp-controller="Admin" asp-action="UpsertMovie">
+                    @Html.ValidationSummary()
                     <div class="form-group">
                         <label for="movie-title">Title</label>
-                        <input id="movie-title" class="form-control" placeholder="Title" name="Title"/>
+                        <input asp-for="Title" id="movie-title" class="form-control" placeholder="Title" name="Title" />
                         <button type="submit">Submit</button>
                     </div>
                 </form>
@@ -43,10 +43,6 @@
 
 @section Scripts {
     <script>
-        $('#frame').ready(() => {
-            $('#frame').hide();
-        })
-
         function goBack() {
             window.history.back()
         }
@@ -57,7 +53,7 @@
         }
         function clearImage() {
             document.getElementById('formFile').value = null;
-            frame.src = "";
+            frame.src = "../assets/blank-image.jpg";
             $('#frame').hide();
         }
 

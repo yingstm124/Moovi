@@ -1,4 +1,5 @@
-﻿using Moovi.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Moovi.Models;
 using Moovi.Repository.MockDatas;
 using Moovi.Services.Interfaces;
 using Moovi.ViewModels;
@@ -20,7 +21,18 @@ namespace Moovi.Services
         }
         public AdminMovieDetailViewModel GetMovie(Guid movieId)
         {
-            throw new NotImplementedException();
+            var movie = MovieList.SelectMovie(movieId);
+            if (movie == null)
+                throw new InvalidDataException("");
+            return new AdminMovieDetailViewModel()
+            {
+                Id = movie.Id,
+                Title = movie.Title,
+                FileName = movie.FileName,
+                FilePath = movie.FilePath,
+                CreatedDate = movie.CreatedDate,
+                ModifyDate = movie.ModifyDate,
+            };
         }
 
         public void UpsertMovie(Guid movieId ,UpsertMovieViewModel upsertMovie)
@@ -47,7 +59,7 @@ namespace Moovi.Services
 
         public void DeleteMovie(Guid movieId)
         {
-            throw new NotImplementedException();
+            MovieList.DeleteMovie(movieId);
         }
 
         public List<AdminMovieViewModel> GetAdminMovies()

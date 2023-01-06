@@ -1,5 +1,26 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model AdminMovieDetailViewModel
+@using Moovi.ViewModels
+
+<div>
+    <div>
+        <h1>@Model.Title</h1>
+    </div>
+    
+    <a  class="link-secondary" asp-action="Index">Back</a>
+
+    <br/>
+
+
+    <div>
+        <p>Create Date : @Model.CreatedDate.ToString("dddd, dd MMMM yyyy")</p>
+    </div>
+
+    <div>
+        <p>Modify Date : @Model.ModifyDate.ToString("dddd, dd MMMM yyyy")</p>
+    </div>
+
+    <br />
+    <div>
+        <img src="~/assets/blank-image.jpg" alt="Blank image" width="200"/>
+    </div>
+</div>
