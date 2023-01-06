@@ -27,7 +27,16 @@
         </div>
 
         <div class="col-md-8">
-            <div>rerr</div>
+            <div class="d-flex align-items-start flex-column h-100">
+                <form class="form-horizontal" asp-controller="Admin" asp-action="CreateMovie">
+                    <div class="form-group">
+                        <label for="movie-title">Title</label>
+                        <input id="movie-title" class="form-control" placeholder="Title" name="Title"/>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>

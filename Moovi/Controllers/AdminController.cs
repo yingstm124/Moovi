@@ -20,6 +20,7 @@ namespace Moovi.Controllers
         }
         public IActionResult CreateMovie() 
         {
+            
             var formMovie = new UpsertMovieViewModel()
             {
                 Title = ""
@@ -29,10 +30,14 @@ namespace Moovi.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult CreateMovie(UpsertMovieViewModel newMovie) 
+        public IActionResult CreateMovie(UpsertMovieViewModel upsertMovie) 
         {
-            _movieService.UpsertMovie(Guid.Empty, newMovie);
-            return Json(new { success = true , message = "Create movie Successful!"});
+            if (ModelState.IsValid) 
+            { 
+                _movieService.UpsertMovie(Guid.Empty, upsertMovie);
+            }
+            return RedirectToAction(nameof(Index));
+            // return Json(new { success = true , message = "Create movie Successful!"});
         }
 
     }
